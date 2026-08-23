@@ -1,1 +1,10 @@
+# 📦 Requirements
+
+The project requires **Python 3.9 or later**.
+
+### Python Dependencies
+
+The external Python dependency used by the project is:
+
+```text
 requests>=2.31.0
