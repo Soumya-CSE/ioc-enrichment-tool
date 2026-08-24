@@ -25,7 +25,6 @@ It can help a SOC analyst quickly determine whether an IOC has known malicious a
 * 🧾 JSON report generation
 * ⏱️ Configurable API request delay
 * 🔑 Environment-variable based API key management
-* 🧩 Modular source architecture
 * 💻 Command-line interface
 * 🎯 Designed for SOC investigation workflows
 
@@ -718,8 +717,6 @@ The main objectives of this project are to:
 Planned improvements could include:
 
 * [ ] Shodan integration
-* [ ] GreyNoise integration
-* [ ] URLhaus integration
 * [ ] ThreatFox integration
 * [ ] Automatic IOC extraction from emails
 * [ ] SIEM integration
@@ -733,7 +730,6 @@ Planned improvements could include:
 * [ ] Docker support
 * [ ] Unit and integration tests
 * [ ] Async API requests
-* [ ] Configurable provider profiles
 
 ---
 
