@@ -83,7 +83,11 @@ IOC/
 | `sample_iocs.txt`  | Sample IOC dataset for testing batch enrichment.                                    |
 
 ---
+## 🖥️ Screenshots
+### 📄 PowerShell Output
+<img width="1104" height="402" alt="Screenshot 2026-08-22 170508" src="https://github.com/user-attachments/assets/a07921ac-8fa7-4373-ba03-f8b49a103392" />
 
+---
 # ⚙️ Architecture
 
 ```text
