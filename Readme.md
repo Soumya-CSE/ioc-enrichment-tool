@@ -1,4 +1,4 @@
-# IOC Enrichment Tool
+# 🛡️🔍 IOC Enrichment Tool
 
 A lightweight **Python-based Threat Intelligence and IOC Enrichment Tool** designed for practical **SOC Analyst and Blue Team workflows**.
 
