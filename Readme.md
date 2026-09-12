@@ -2,13 +2,13 @@
 
 A lightweight **Python-based Threat Intelligence and IOC Enrichment Tool** designed for practical **SOC Analyst and Blue Team workflows**.
 
-The tool accepts Indicators of Compromise (IOCs), including **IP addresses, domains, URLs, and file hashes**, and enriches them using multiple free-tier threat intelligence platforms.
+The tool accepts **Indicators of Compromise (IOCs)** such as IP addresses, domains, URLs, and file hashes, then enriches them using multiple free-tier threat-intelligence platforms.
 
-It can help a SOC analyst quickly determine whether an IOC has known malicious activity, identify its reputation across multiple sources, and generate structured reports for further investigation or incident documentation.
+It helps SOC analysts quickly investigate suspicious indicators, compare reputation data from multiple sources, calculate an overall risk verdict, and generate structured reports.
 
 ---
 
-## 🛡️ Features
+## 🛡️ Key Features
 
 * 🔍 Automatic IOC classification
 * 🌐 IPv4 address enrichment
@@ -27,7 +27,7 @@ It can help a SOC analyst quickly determine whether an IOC has known malicious a
 
 ---
 
-## 🔎 Supported IOC Types
+## 🧩 Supported IOC Types
 
 | IOC Type   | Example                                    | Supported Sources          |
 | ---------- | ------------------------------------------ | -------------------------- |
@@ -54,37 +54,7 @@ If an API key is not configured, the tool automatically skips that provider and 
 
 ---
 
-# 🏗️ Project Structure
-
-```text
-IOC/
-│
-├── .gitignore
-├── iocEnrich.py
-├── Readme.md
-├── report.csv
-├── Requirements.txt
-└── sample_iocs.txt
-```
-
-## 📂 File Description
-
-| File               | Description                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------- |
-| `.gitignore`       | Prevents sensitive or unnecessary files from being committed to Git.                |
-| `iocEnrich.py`     | Main Python application for IOC classification, enrichment, scoring, and reporting. |
-| `Readme.md`        | Project documentation and usage instructions.                                       |
-| `report.csv`       | Generated IOC enrichment report.                                                    |
-| `Requirements.txt` | Python dependencies required by the project.                                        |
-| `sample_iocs.txt`  | Sample IOC dataset for testing batch enrichment.                                    |
-
----
-## 🖥️ Screenshots
-### 📄 PowerShell Output
-<img width="1104" height="402" alt="Screenshot 2026-08-22 170508" src="https://github.com/user-attachments/assets/a07921ac-8fa7-4373-ba03-f8b49a103392" />
-
----
-# ⚙️ Architecture
+# 🏗️ Architecture
 
 ```text
                          ┌───────────────────┐
@@ -125,14 +95,14 @@ IOC/
                          │   Risk Scoring    │
                          └─────────┬─────────┘
                                    │
-                  ┌────────────────┼────────────────┐
-                  ▼                ▼                ▼
-             MALICIOUS        SUSPICIOUS         CLEAN
-                                   │
-                                   ▼
-                              UNKNOWN
-                                   │
-                                   ▼
+                    ┌──────────────┼──────────────┐
+                    ▼              ▼              ▼
+               MALICIOUS      SUSPICIOUS        CLEAN
+                    │
+                    ▼
+                 UNKNOWN
+                    │
+                    ▼
                          ┌───────────────────┐
                          │     Reporting     │
                          │                   │
@@ -158,7 +128,7 @@ cd ioc-enrichment-tool
 pip install -r Requirements.txt
 ```
 
-If your system uses `python3`:
+For systems using `python3`:
 
 ```bash
 pip3 install -r Requirements.txt
@@ -168,9 +138,7 @@ pip3 install -r Requirements.txt
 
 # 🔑 API Configuration
 
-The tool uses environment variables for API credentials.
-
-This is safer than hard-coding API keys directly into the Python source code.
+The tool uses environment variables for API credentials instead of storing API keys directly in the source code.
 
 ## Linux / macOS
 
@@ -188,11 +156,11 @@ $env:ABUSEIPDB_API_KEY="your_abuseipdb_key"
 $env:OTX_API_KEY="your_otx_key"
 ```
 
-> **Important:** Never commit API keys to GitHub.
+> ⚠️ **Important:** Never commit API keys to GitHub.
 
 ---
 
-# 🔐 Obtain API Keys
+# 🔐 Obtaining API Keys
 
 ### VirusTotal
 
@@ -216,27 +184,27 @@ https://otx.alienvault.com/
 
 # 💻 Usage
 
-## Single IOC
+## Analyze a Single IOC
 
-Analyze a single IP address:
+### IP Address
 
 ```bash
 python iocEnrich.py --ioc 8.8.8.8
 ```
 
-Analyze a domain:
+### Domain
 
 ```bash
 python iocEnrich.py --ioc example.com
 ```
 
-Analyze a URL:
+### URL
 
 ```bash
 python iocEnrich.py --ioc https://example.com/login
 ```
 
-Analyze a file hash:
+### File Hash
 
 ```bash
 python iocEnrich.py --ioc d41d8cd98f00b204e9800998ecf8427e
@@ -246,7 +214,7 @@ python iocEnrich.py --ioc d41d8cd98f00b204e9800998ecf8427e
 
 # 📁 Batch IOC Analysis
 
-The tool supports processing multiple IOCs from a text file.
+The tool can process multiple IOCs from a text file.
 
 Example `sample_iocs.txt`:
 
@@ -265,7 +233,7 @@ Run:
 python iocEnrich.py --input sample_iocs.txt
 ```
 
-This is useful when investigating:
+Batch analysis is useful when investigating:
 
 * Phishing emails
 * SOC alerts
@@ -278,28 +246,25 @@ This is useful when investigating:
 
 ---
 
-# 📊 CSV Reporting
+# 📊 Reporting
 
-Export enrichment results to CSV:
+## CSV Report
 
 ```bash
 python iocEnrich.py --input sample_iocs.txt --output report.csv
 ```
 
-The generated `report.csv` can be used for:
+CSV reports are useful for:
 
+* Analyst review
+* Excel/LibreOffice
 * Incident tickets
 * SOC documentation
-* Threat hunting
 * IOC tracking
+* Threat hunting
 * Security reports
-* Further data analysis
 
----
-
-# 🧾 JSON Reporting
-
-Generate a structured JSON report:
+## JSON Report
 
 ```bash
 python iocEnrich.py \
@@ -308,7 +273,7 @@ python iocEnrich.py \
     --format json
 ```
 
-JSON output can be useful for:
+JSON output can be used for:
 
 * Security automation
 * SOAR integrations
@@ -319,27 +284,34 @@ JSON output can be useful for:
 
 ---
 
-# ⏱️ API Request Delay
+# ⚠️ Risk Scoring
 
-Threat intelligence APIs enforce rate limits.
+The tool generates four overall verdicts.
 
-The tool supports a configurable delay between requests.
+### 🔴 MALICIOUS
 
-Example:
+Strong evidence indicates that the IOC is associated with malicious activity.
 
-```bash
-python iocEnrich.py --input sample_iocs.txt --delay 16
-```
+Possible indicators include:
 
-You can specify a shorter or longer delay:
+* Multiple security engines detecting the IOC
+* High abuse confidence
+* Strong malicious reputation
+* Multiple threat-intelligence reports
 
-```bash
-python iocEnrich.py --input sample_iocs.txt --delay 5
-```
+### 🟠 SUSPICIOUS
 
-The default delay is designed to reduce the chance of exceeding free-tier API limits.
+The IOC contains indicators of potentially malicious activity, but the available evidence may not be conclusive.
 
-> Lowering the delay does not increase an API provider's rate limit and may cause rate-limit errors.
+### 🟢 CLEAN
+
+Available intelligence sources do not currently report significant malicious activity.
+
+### ⚪ UNKNOWN
+
+There is insufficient intelligence to make a reliable determination.
+
+> **Important:** `CLEAN` or `UNKNOWN` does not guarantee that an IOC is safe. Threat-intelligence databases may have incomplete or outdated coverage.
 
 ---
 
@@ -360,13 +332,9 @@ SHA-256
 
 Classification is performed using regular expressions and Python standard-library validation.
 
----
-
 ## 2. Source Selection
 
 After classification, the tool determines which intelligence sources support the IOC type.
-
-For example:
 
 ```text
 IP Address
@@ -389,52 +357,40 @@ File Hash
 
 This prevents unnecessary API requests.
 
----
-
 ## 3. Threat Intelligence Enrichment
 
 The tool queries the configured providers and collects available reputation and detection information.
 
-The collected data is normalized into a common result structure.
+The collected data is normalized into a common result structure, making information from different providers easier to compare.
 
-This makes it easier to compare information from multiple intelligence providers.
+## 4. Risk Verdict
 
----
+The collected intelligence is analyzed to produce one of four verdicts:
 
-# ⚠️ Risk Scoring
+```text
+MALICIOUS
+SUSPICIOUS
+CLEAN
+UNKNOWN
+```
 
-The tool generates one of four overall verdicts:
+## 5. Reporting
 
-### 🔴 MALICIOUS
+Results can be displayed through:
 
-Strong evidence indicates that the IOC is associated with malicious activity.
-
-Possible indicators include:
-
-* Multiple security engines detecting the IOC
-* High abuse confidence
-* Strong malicious reputation
-* Multiple threat-intelligence reports
-
-### 🟠 SUSPICIOUS
-
-The IOC has some indicators of potentially malicious activity, but the available evidence may not be conclusive.
-
-### 🟢 CLEAN
-
-Available intelligence sources do not currently report significant malicious activity.
-
-### ⚪ UNKNOWN
-
-There is insufficient intelligence to make a reliable determination.
-
-> **Important:** `CLEAN` or `UNKNOWN` does not guarantee that an IOC is safe. Threat intelligence databases may have incomplete or outdated coverage.
+```text
+Console
+   │
+   ├── CSV
+   │
+   └── JSON
+```
 
 ---
 
-# 🧪 Example Investigation Workflow
+# 🧪 Example SOC Investigation Workflow
 
-A SOC analyst receives a phishing alert containing:
+Suppose a SOC analyst receives a phishing alert containing:
 
 ```text
 185.XX.XX.XX
@@ -451,10 +407,13 @@ sample_iocs.txt
 Then run:
 
 ```bash
-python iocEnrich.py --input sample_iocs.txt --output report.json --format json
+python iocEnrich.py \
+    --input sample_iocs.txt \
+    --output report.json \
+    --format json
 ```
 
-The tool performs:
+The investigation workflow becomes:
 
 ```text
 Phishing Alert
@@ -478,7 +437,7 @@ Risk Verdict
 SOC Investigation
 ```
 
-The resulting report can then be used by the analyst to decide whether additional investigation or containment is required.
+The resulting report can help the analyst determine whether additional investigation or containment is required.
 
 ---
 
@@ -486,7 +445,7 @@ The resulting report can then be used by the analyst to decide whether additiona
 
 The project uses a modular source-integration architecture.
 
-The source functions follow a common interface:
+Source functions follow a common interface:
 
 ```python
 query_source(ioc, ioc_type, result)
@@ -506,13 +465,13 @@ The integrations are registered through:
 SOURCE_FUNCS
 ```
 
-This makes it easier to add additional threat intelligence providers.
+This makes it easier to add additional threat-intelligence providers.
 
 ---
 
 # 🔌 Extending the Tool
 
-Additional sources can be added using the same architecture.
+Additional threat-intelligence providers can be added using the same architecture.
 
 Potential future integrations include:
 
@@ -524,8 +483,6 @@ Potential future integrations include:
 * **CIRCL**
 * **SecurityTrails**
 
-A new provider can be implemented as a source function and added to `SOURCE_FUNCS`.
-
 Example:
 
 ```python
@@ -536,13 +493,37 @@ def query_new_source(ioc, ioc_type, result):
     pass
 ```
 
-Then register it with the source configuration.
+The new provider can then be registered through the source configuration.
+
+---
+
+# ⏱️ API Request Delay
+
+Threat-intelligence APIs enforce rate limits.
+
+The tool supports a configurable delay between requests.
+
+Example:
+
+```bash
+python iocEnrich.py --input sample_iocs.txt --delay 16
+```
+
+Or:
+
+```bash
+python iocEnrich.py --input sample_iocs.txt --delay 5
+```
+
+The default delay is designed to reduce the chance of exceeding free-tier API limits.
+
+> ⚠️ Lowering the delay does not increase an API provider's rate limit and may cause rate-limit errors.
 
 ---
 
 # 🛡️ Security Best Practices
 
-### Never hard-code API keys
+## Never Hard-Code API Keys
 
 Avoid:
 
@@ -552,9 +533,9 @@ VT_API_KEY = "123456789abcdef"
 
 Use environment variables instead.
 
-### Protect sensitive information
+## Protect Sensitive Information
 
-Do not upload:
+Do not upload the following to public repositories:
 
 * API keys
 * Private credentials
@@ -562,11 +543,7 @@ Do not upload:
 * Confidential URLs
 * Sensitive incident data
 
-to public repositories.
-
-### Use `.gitignore`
-
-The project includes `.gitignore` to prevent sensitive files from accidentally being committed.
+## Use `.gitignore`
 
 Example:
 
@@ -580,123 +557,57 @@ __pycache__/
 
 ---
 
-# 📈 SOC Analyst Use Cases
+# 📸 Screenshots
 
-This project can be used during several SOC activities.
+## PowerShell Output
 
-### Phishing Investigation
-
-Extract:
-
-* Sender IP
-* URLs
-* Domains
-* File hashes
-
-and enrich them using the tool.
-
-### Malware Investigation
-
-Submit:
-
-* MD5
-* SHA-1
-* SHA-256
-
-hashes to identify known malware detections.
-
-### Network Investigation
-
-Analyze suspicious:
-
-* Source IPs
-* Destination IPs
-* Domains
-
-from firewall, proxy, DNS, or network monitoring alerts.
-
-### Threat Hunting
-
-Process a list of suspicious indicators collected from:
-
-* SIEM alerts
-* EDR alerts
-* Threat reports
-* Firewall logs
-* DNS logs
-* Email security systems
+<img width="1104" height="402" alt="IOC Enrichment Tool PowerShell Output" src="https://github.com/user-attachments/assets/a07921ac-8fa7-4373-ba03-f8b49a103392" />
 
 ---
 
-# 🗂️ Reporting
-
-The tool supports multiple reporting formats:
+# 🗂️ Project Structure
 
 ```text
-IOC
- │
- ├── Console Output
- │
- ├── CSV Report
- │
- └── JSON Report
+IOC/
+│
+├── .gitignore
+│
+├── iocEnrich.py
+│   └── Main IOC enrichment engine
+│
+├── Readme.md
+│   └── Project documentation
+│
+├── report.csv
+│   └── Generated enrichment report
+│
+├── Requirements.txt
+│   └── Python dependencies
+│
+└── sample_iocs.txt
+    └── Sample IOC input dataset
 ```
-
-### CSV
-
-Best suited for:
-
-* Analyst review
-* Excel/LibreOffice
-* Ticket attachments
-* IOC tracking
-
-### JSON
-
-Best suited for:
-
-* Automation
-* APIs
-* SOAR
-* SIEM integration
-* Python-based processing
 
 ---
 
 # 🧰 Technologies Used
 
-| Technology             | Purpose                          |
-| ---------------------- | -------------------------------- |
-| **Python**             | Core development language        |
-| **Requests**           | API communication                |
-| **Regex**              | IOC classification               |
-| **JSON**               | Structured reporting/API data    |
-| **CSV**                | Report generation                |
-| **VirusTotal API**     | Multi-engine threat intelligence |
-| **AbuseIPDB API**      | IP reputation analysis           |
-| **AlienVault OTX API** | Threat intelligence and IOC data |
-
----
-
-# 📦 Requirements
-
-The project dependencies are listed in:
-
-```text
-Requirements.txt
-```
-
-Install them with:
-
-```bash
-pip install -r Requirements.txt
-```
+| Technology             | Purpose                           |
+| ---------------------- | --------------------------------- |
+| **Python**             | Core development language         |
+| **Requests**           | API communication                 |
+| **Regex**              | IOC classification                |
+| **JSON**               | Structured reporting and API data |
+| **CSV**                | Report generation                 |
+| **VirusTotal API**     | Multi-engine threat intelligence  |
+| **AbuseIPDB API**      | IP reputation analysis            |
+| **AlienVault OTX API** | Threat intelligence and IOC data  |
 
 ---
 
 # 🎯 Project Objectives
 
-The main objectives of this project are to:
+The main objectives are to:
 
 1. Automate IOC classification.
 2. Reduce manual threat-intelligence lookups.
@@ -709,9 +620,51 @@ The main objectives of this project are to:
 
 ---
 
-# 🚀 Future Enhancements
+# 📈 SOC Analyst Use Cases
 
-Planned improvements could include:
+## 🔎 Phishing Investigation
+
+Extract and enrich:
+
+* Sender IP
+* URLs
+* Domains
+* File hashes
+
+## 🦠 Malware Investigation
+
+Submit:
+
+* MD5
+* SHA-1
+* SHA-256
+
+hashes to identify known malware detections.
+
+## 🌐 Network Investigation
+
+Analyze suspicious:
+
+* Source IPs
+* Destination IPs
+* Domains
+
+from firewall, proxy, DNS, or network-monitoring alerts.
+
+## 🎯 Threat Hunting
+
+Process suspicious indicators collected from:
+
+* SIEM alerts
+* EDR alerts
+* Threat reports
+* Firewall logs
+* DNS logs
+* Email security systems
+
+---
+
+# 🚀 Future Enhancements
 
 * [ ] Shodan integration
 * [ ] ThreatFox integration
@@ -730,13 +683,19 @@ Planned improvements could include:
 
 ---
 
-# ⚠️ Disclaimer
+# 📦 Requirements
 
-This project is intended for **educational, defensive security, threat-intelligence, SOC analysis, and authorized security testing purposes**.
+Project dependencies are listed in:
 
-Threat intelligence results should be treated as investigative evidence rather than absolute truth. Different providers may have different coverage, detection methodologies, and update frequencies.
+```text
+Requirements.txt
+```
 
-Always follow the terms of service and API usage policies of the external threat-intelligence providers.
+Install them using:
+
+```bash
+pip install -r Requirements.txt
+```
 
 ---
 
@@ -764,34 +723,32 @@ This project demonstrates practical knowledge of:
 
 # ⭐ Project Summary
 
-**IOC Enrichment Tool** is a practical Python-based SOC utility that automates the process of investigating Indicators of Compromise.
+**IOC Enrichment Tool** is a practical Python-based SOC utility that automates the investigation of Indicators of Compromise.
 
-Instead of manually checking every IP address, domain, URL, or file hash across multiple threat-intelligence platforms, analysts can provide the indicators to the tool and receive consolidated enrichment and risk information.
+Instead of manually checking every IP address, domain, URL, or file hash across multiple threat-intelligence platforms, analysts can provide indicators to the tool and receive consolidated enrichment and risk information.
 
-The project demonstrates how **Python automation + threat intelligence APIs + IOC classification + risk scoring + structured reporting** can be combined into a practical cybersecurity workflow.
+The project demonstrates how:
+
+```text
+Python Automation
+       +
+Threat Intelligence APIs
+       +
+IOC Classification
+       +
+Risk Scoring
+       +
+Structured Reporting
+       ↓
+Practical SOC Investigation Workflow
+```
 
 ---
 
-## 📌 Project Structure
+# ⚠️ Disclaimer
 
-```text
-IOC/
-│
-├── .gitignore
-│
-├── iocEnrich.py
-│   └── Main IOC enrichment engine
-│
-├── Readme.md
-│   └── Project documentation
-│
-├── report.csv
-│   └── Generated enrichment report
-│
-├── Requirements.txt
-│   └── Python dependencies
-│
-└── sample_iocs.txt
-    └── Sample IOC input dataset
-```
+This project is intended for **educational, defensive security, threat-intelligence, SOC analysis, and authorized security testing purposes**.
 
+Threat-intelligence results should be treated as investigative evidence rather than absolute truth. Different providers may have different coverage, detection methodologies, and update frequencies.
+
+Always follow the terms of service and API usage policies of the external threat-intelligence providers.
