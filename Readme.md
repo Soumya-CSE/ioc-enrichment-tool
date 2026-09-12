@@ -1,4 +1,4 @@
-# 🛡️🔍 IOC Enrichment Tool
+# 🔍 IOC Enrichment Tool
 
 A lightweight **Python-based Threat Intelligence and IOC Enrichment Tool** designed for practical **SOC Analyst and Blue Team workflows**.
 
@@ -16,10 +16,7 @@ It can help a SOC analyst quickly determine whether an IOC has known malicious a
 * 🌎 URL enrichment
 * 🔐 MD5, SHA-1, and SHA-256 hash analysis
 * 🦠 VirusTotal integration
-* 🚨 AbuseIPDB integration
-* 👽 AlienVault OTX integration
 * 📊 Combined threat scoring
-* ⚠️ `MALICIOUS / SUSPICIOUS / CLEAN / UNKNOWN` verdicts
 * 📁 Batch IOC processing
 * 📄 CSV report generation
 * 🧾 JSON report generation
