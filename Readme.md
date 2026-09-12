@@ -563,6 +563,10 @@ __pycache__/
 
 <img width="1104" height="402" alt="IOC Enrichment Tool PowerShell Output" src="https://github.com/user-attachments/assets/a07921ac-8fa7-4373-ba03-f8b49a103392" />
 
+## Excel Report
+
+<img width="1467" height="208" alt="Screenshot 2026-09-12 131848" src="https://github.com/user-attachments/assets/f84d6060-95c2-4dc3-b31d-210c7bf64bd6" />
+
 ---
 
 # 🗂️ Project Structure
@@ -752,3 +756,23 @@ This project is intended for **educational, defensive security, threat-intellige
 Threat-intelligence results should be treated as investigative evidence rather than absolute truth. Different providers may have different coverage, detection methodologies, and update frequencies.
 
 Always follow the terms of service and API usage policies of the external threat-intelligence providers.
+
+---
+
+# 👨‍💻 Author
+
+## Soumya Kanti Hazra
+
+### Computer Science & Engineering Student
+
+Aspiring SOC Analyst | Cybersecurity Enthusiast
+
+GitHub: https://github.com/Soumya-CSE
+
+LinkedIn: https://www.linkedin.com/in/soumya-kanti-hazra-b20162374
+
+TryHackMe: https://tryhackme.com/p/soumyahazra
+
+
+# ⭐ Support
+If you found this project useful for learning Cybersecurity, Cryptography, Python, or Flask, consider giving the repository a ⭐ on GitHub.
