@@ -770,8 +770,6 @@ GitHub: https://github.com/Soumya-CSE
 
 LinkedIn: https://www.linkedin.com/in/soumya-kanti-hazra-b20162374
 
-TryHackMe: https://tryhackme.com/p/soumyahazra
-
 
 # ⭐ Support
 If you found this project useful for learning Cybersecurity, Cryptography, Python, or Flask, consider giving the repository a ⭐ on GitHub.
