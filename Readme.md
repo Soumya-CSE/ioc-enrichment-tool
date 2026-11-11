@@ -20,7 +20,6 @@ It helps SOC analysts quickly investigate suspicious indicators, compare reputat
 * 📁 Batch IOC processing
 * 📄 CSV report generation
 * 🧾 JSON report generation
-* ⏱️ Configurable API request delay
 * 🔑 Environment-variable based API key management
 * 💻 Command-line interface
 * 🎯 Designed for SOC investigation workflows
